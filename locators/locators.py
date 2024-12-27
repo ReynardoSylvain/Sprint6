@@ -7,7 +7,7 @@ class MainPageLocators:
     QUESTION_TEXT = By.ID, "accordion__panel-{}"
     QUESTION_SECTION = By.ID, "accordion__heading-7"
     COOKIES_BUTTON = By.XPATH, "//button[@id='rcc-confirm-button']"
-    UP_ORDER_BUTTON = By.XPATH, "(//button[@class='Button_Button__ra12g'])[1]"
+    UP_ORDER_BUTTON = By.XPATH, "//button[@class ='Button_Button__ra12g' and contains(text(), 'Заказать')]"
     LOW_ORDER_BUTTON = By.XPATH, "//div[contains(@class, 'Home_FinishButton__')]//button"
     SAMOKAT_LOGO = By.XPATH, "//img[@alt='Scooter']"
 
@@ -34,4 +34,4 @@ class OrderPageLocators:
     BUTTON_FOR_REDIRECT_DZEN = By.XPATH, "//img[@alt='Yandex']"
     BUTTON_YES = By.XPATH, "//button[contains(text(),'Да')]"
     ACCEPT_ORDER = By.XPATH, "//div[contains(@class, 'Order_ModalHeader')]"
-    ORDER_BUTTON_FROM_FORM = By.XPATH, "(//button[@class='Button_Button__ra12g Button_Middle__1CSJM'])[1]"
+    ORDER_BUTTON_FROM_FORM = By.XPATH, "//div[contains(@class, 'Order_Buttons')]/button[contains(text(), 'Заказать')]"

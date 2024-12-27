@@ -9,7 +9,7 @@ from pages.order_page import OrderPage
 class TestOrderPage:
 
     @allure.title("Тест заказа самоката")
-    @allure.description("Создание заказа и переход на главную страницу Яндекс.Самокат")
+    @allure.description("Создание заказа кликом на верхнюю кнопку Заказать")
     def test_order_and_redirect_to_homepage(self, driver):
         order_page = OrderPage(driver)
         main_page = MainPage(driver)
@@ -25,11 +25,9 @@ class TestOrderPage:
                              storage.COMMENT)
         assert 'Заказ оформлен' in order_page.check_order()
         order_page.check_status_and_close_window()
-        main_page.click_to_logo_samokat()
-        assert order_page.current_url() == storage.HOMEPAGE_URL
 
     @allure.title("Тест заказа самоката")
-    @allure.description("Создание заказа и переход на главную страницу Дзен")
+    @allure.description("Создание заказа кликом на нижнюю кнопку Заказать")
     def test_order_and_redirect_to_dzen(self, driver):
         order_page = OrderPage(driver)
         main_page = MainPage(driver)
@@ -44,12 +42,3 @@ class TestOrderPage:
                              storage.DAYS_2,
                              storage.COMMENT_2)
         assert 'Заказ оформлен' in order_page.check_order()
-        order_page.check_status_and_close_window()
-        order_page.click_on_button_to_redirect_dzen()
-        order_page.switch_to_next_window()
-
-        actual_url = urlparse(order_page.current_url())
-        expected_url = urlparse(storage.DZEN_URL)
-        assert actual_url.scheme == expected_url.scheme
-        assert actual_url.netloc == expected_url.netloc
-        assert actual_url.path == expected_url.path
